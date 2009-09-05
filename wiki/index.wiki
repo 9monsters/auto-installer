@@ -1,0 +1,36 @@
+#labels Featured,Phase-Design,Phase-Deploy
+= Linux Auto-Install =
+
+自动编译安装Linux应用程序
+
+
+= 已支持 =
+{{{
+apache
+berkeleydb
+freetype
+fuse
+gd
+glib
+jboss
+jbossweb
+jdk
+libevent
+libiconv
+libjpeg
+libmcrypt
+libpng
+libtool
+libxml
+memcache
+mysql
+nginx
+ntfs-3g
+openldap
+openssl
+pcre
+php
+rstat
+spawn-fcgi
+zlib
+}}}

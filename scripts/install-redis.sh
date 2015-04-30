@@ -1,5 +1,5 @@
 #!/bin/bash
-# 文件名：install-nginx.sh
+# 文件名：install-redis.sh
 
 scriptBaseDir="/data/InitScript"
 # 检查pcre是否安装
@@ -10,18 +10,18 @@ elif [ -d "${pcreDir}" ];then
         mv "${pcreDir}" "${pcreDir}_${nowTime}"
 fi
 ${scriptBaseDir}/install-pcre.sh
-# 安装Nginx
+# 安装redis
 bash ${scriptBaseDir}/mount-netdisk.sh
 nowTime=`date '+%Y%m%d%H%M%S'`
 colorFile="${scriptBaseDir}/color-string.sh"
 
-setupFile="/mnt/wol-fileshare-s/OPVol/nginx-0.6.36.tar.gz"
+setupFile="/mnt/wol-fileshare-s/OPVol/redis.tar.gz"
 gppFile="/mnt/CentOS_5.3_Final/CentOS/gcc-c++-4.1.2-44.el5.x86_64.rpm"
 extractDir="/data/setupfiles/"
 verName=`tar -ztf "${setupFile}" | head -1`
 setupDir="/data/setupfiles/"${verName}
 programDir="/data/programfiles/"${verName}
-linkDir="/usr/local/nginx"
+linkDir="/usr/local/redis"
 
 # 查看是否安装g++编译器
 rpm -qa | grep gcc-c++
@@ -47,8 +47,7 @@ ln -s "${programDir}" "${linkDir}"
 cd "${setupDir}"
 make clean
 # 预编译
-./configure --prefix="${linkDir}" --user=www --group=www --with-http_stub_status_module --with-http_perl_module --with-pcre=${extractDir}/pcre-6.3/ 
-# --without-http_rewrite_module
+./configure --prefix="${linkDir}" 
 ec="${?}"
 if [ "${ec}" -ne 0 ];then
 	echo `pwd`"/configure"`"${colorFile}" " 失败！ErrorCode:${ec}" Red 0 0`

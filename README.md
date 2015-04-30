@@ -1,2 +1,2 @@
-# auto-installer
-Some auto instaler shell script 
+# Auto-installer
+Some auto instalLer shell script 
